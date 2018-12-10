@@ -1,0 +1,774 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    
+
+   <link href="style.css" rel="stylesheet" />
+    <link href="fontsKnowYourNumber/flaticon.css" rel="stylesheet" />
+   
+    <style>
+        ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+          text-align:center;
+        }
+        ::-moz-placeholder { /* Firefox 19+ */
+          text-align:center;
+        }
+        :-ms-input-placeholder { /* IE 10+ */
+          text-align:center;
+        }
+        :-moz-placeholder { /* Firefox 18- */
+          text-align:center;
+        }
+        .Button {
+            padding : 10px;
+        }
+        .Label {
+            margin-bottom: 5px;
+        }
+        .formSmallNote {
+            color:red;
+        }
+        #HbA1c_message1,#pressure_message1,#Waistline_message,#HbA1c_message2,#HbA1c_message3,#HbA1c_message4,#pressure_message2{
+            height: 250px !important;
+            
+
+        }
+        .RequiredFieldSpanAge {
+            color:red;
+        }
+        #body_weight_container {
+
+            display:none;
+        }
+        
+        
+   
+
+       .MessageStyle {
+    height: 193px;
+    text-align: justify;
+    padding: 14px;
+}   
+
+
+    .titleKnowYourNumber {
+    font-size: 29px;
+    color: #0d8c60;
+    font-family: DroidKufi-Bold;
+    }
+    .choiceForDiabetes {
+        display:none;
+    }
+    .body_weight_item {
+        width: 30%;
+    }
+
+ .bmi_line {
+        width: 100%;
+        display: block;
+        background: linear-gradient(to right, rgb(133, 32, 12) 0%,rgb(166, 28, 0) 16.6%,rgb(204, 65, 37) 33.2%,rgb(255, 153, 0) 49.8%,rgb(15, 139, 95) 66.5%,rgb(255, 217, 102) 83%);
+        border-radius: 25px;
+        margin-top: 70px;
+    }
+
+
+    </style>
+</head>
+<body>
+    
+          <div class="int_contents">
+            <div class="main_conts">
+                <!-- -->
+                <div id="DeltaPageStatusBar">
+	
+		<div id="">
+			<a name="mainContent"></a>
+			<div id="pageStatusBar"></div>
+			<div id="divPlaceHolderMain">
+				
+	<div class="noindex" id="PageContent">
+		<div class="nd_title titleKnowYourNumber">اعرف أرقامك</div>
+
+			
+				<div class="news_details" style="padding:10px;">
+					<div align="justify">						
+						<div id="" style='display:none'>محتوى الصفحة</div>
+					</div>
+				</div>
+				<div style="clear:both;">
+					
+				
+
+					
+<table width='100%' cellpadding="0" cellspacing="0">
+    <tr>
+        <td style="width: 664px; *width: 100%;">
+            <div id='' class="news_title2" style="display: none">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div id='' class='divHeaderContent noindex'>
+                <table width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td style="padding: 3px;">
+                            <!-- Required fields mark message -->
+                            <div class='formNote' style="border-bottom: 0pt none;">
+                                <span id="" class="Label"></span><span class="RequiredMarkCssClass">*</span>
+                                &nbsp;<span id="" class="formSmallNote">تعني أن الحقل مطلوب</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tdHeaderDescription">
+                            <!-- Description Lable -->
+                            <span id="">
+                                هي حملة لتوعية المجتمع بأهمية الأرقام الثلاثة وهي  (السكري ،الضغط ،محيط الخصر ) .
+
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <!-- Messages Panel -->
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 7px;">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div class="formgroup">
+	<div>
+           <span class="DevHelperRequiredMark">*</span> <label for="" id="gender" class="Label">الجنس</label>
+
+               <span id="">
+                <input id="male" type="radio" name="Gender" value="male" onclick="reset_msg('RequiredFieldSpanRadioGender');" />
+                <label for="male">ذكر</label>
+                <input id="female" type="radio" name="Gender" value="female" onclick="reset_msg('RequiredFieldSpanRadioGender');"  />
+                <label for="female">أنثى</label>
+
+               </span>
+              <span id="RequiredFieldSpanRadioGender" style="display:none; color:red;">الحقل مطلوب</span>
+
+	</div>
+
+
+
+
+
+	<div>
+            <span class="DevHelperRequiredMark">*</span><label for="" id="" class="Label">العمر</label>
+
+            <input name="" type="text" maxlength="4" id="Age" tabindex="1" class="TextBox" style="text-align: left;" placeholder="كم عمرك؟" onkeyup="checkDec(this);" onkeypress="clearText('RequiredFieldSpanAge');"/>
+        <span id="RequiredFieldSpanAge" class="RequiredFieldSpanAge" style="display:none;">الحقل مطلوب</span>
+        <br />
+           
+    </div>
+
+
+
+
+    <div>
+        <label for="" id="" class="Label" style="font-weight:bold;">السكري-</label> 
+        <br />
+        <br />
+           <span class="DevHelperRequiredMark">*</span> <label for="" id="Answer1" class="Label">هل أنت مصاب بالسكر </label>
+
+               <span id="">
+                <input id="yes_ihave" type="radio" name="Answer1"  onclick="reset_msg('RequiredFieldSpanRadioAnswer1'); ResetMessage('yes_ihave','choiceForDiabetes'); reset_msg('choiceForDiabetesAfterTwoHours'); reset_msg('choiceForDiabetesFast'); showAndHide('yes_ihave','HbA1cInput' );" />
+                <label for="yes_ihave">نعم</label>
+                <input id="no_ihavenot" type="radio" name="Answer1"  onclick="reset_msg('RequiredFieldSpanRadioAnswer1'); showAndHide('no_ihavenot','choiceForDiabetes' ); reset_msg('HbA1cInput');" />
+                <label for="no_ihavenot">لا</label></span>
+
+            <span id="RequiredFieldSpanRadioAnswer1" style="display:none; color :red;">الحقل مطلوب</span>
+	</div>
+
+
+
+
+
+    <div style="display:none;" id="choiceForDiabetes">
+        <br />
+        
+           <span class="DevHelperRequiredMark">*</span> <label for="" id="Answer2" class="Label">صائم ؟ بعد الأكل بساعتين (الرجاء الاختيار صائم أو بعد الأكل بساعتين أو المعدل التراكمي) .</label>
+        <br />
+               <span id="">
+                <input id="fast" type="radio" name="Answer2"  onclick="reset_msg('RequiredFieldSpanRadioAnswer2'); showAndHide('fast','choiceForDiabetesFast');reset_msg('choiceForDiabetesAfterTwoHours'); reset_msg('HbA1cInput'); reset_msg('HbA1cNoDiabetesInput');" />
+                <label for="fast">صائم</label>
+                <input id="afterTwoHours" type="radio" name="Answer2"  onclick="reset_msg('RequiredFieldSpanRadioAnswer2'); showAndHide('afterTwoHours','choiceForDiabetesAfterTwoHours');reset_msg('choiceForDiabetesFast'); reset_msg('HbA1cInput'); reset_msg('HbA1cNoDiabetesInput'); " />
+                <label for="afterTwoHours">بعد الأكل بساعتين</label>
+                <input id="HbA1cNoDiabetes" type="radio" name="Answer2"  onclick="reset_msg('RequiredFieldSpanRadioAnswer2'); showAndHide('HbA1cNoDiabetes','HbA1cNoDiabetesInput'); reset_msg('choiceForDiabetesFast'); reset_msg('choiceForDiabetesAfterTwoHours'); " />
+                <label for="HbA1cNoDiabetes">  المعدل التراكمي</label>
+            </span>
+            </span>
+
+            <span id="RequiredFieldSpanRadioAnswer2" style="display:none; color :red;">الحقل مطلوب</span>
+	</div>
+
+
+        
+    <br />
+   <div id="choiceForDiabetesFast" style="display:none;">
+       
+            <span class="DevHelperRequiredMark">*</span><label for="" id="" class="Label">درجة قياس السكر للصائم</label>
+       
+            <input name="" type="text" maxlength="4" id="HbA1cForFast" tabindex="1" class="TextBox" style="text-align: left;" placeholder="درجة قياس السكر للصائم بالملي جرام " 
+                onkeyup="checkDec(this);" onkeypress="clearText('RequiredFieldSpanHbA1cForFast');"/>
+        <a href="#">كيفية قياس السكر pdf</a>
+        <span id="RequiredFieldSpanHbA1cForFast" class="RequiredFieldSpanHbA1c" style="display:none; color:red;">الحقل مطلوب</span><br />
+            
+    </div>
+
+    <div id="choiceForDiabetesAfterTwoHours" style="display:none;">
+            <span class="DevHelperRequiredMark">*</span><label for="" id="" class="Label">-درجة قياس السكر بعد الأكل بساعتين </label>
+
+            <input name="" type="text" maxlength="4" id="HbA1cAfterTwoHours" tabindex="1" class="TextBox" style="text-align: left;" placeholder="درجة قياس السكر بعد الأكل بساعتين " 
+                onkeyup="checkDec(this);" onkeypress="clearText('RequiredFieldSpanHbA1cAfterTwoHours');"/>
+        <a href="#">كيفية قياس السكر pdf</a>
+        <span id="RequiredFieldSpanHbA1cAfterTwoHours" class="RequiredFieldSpanHbA1c" style="display:none; color:red;">الحقل مطلوب</span><br />
+            
+    </div>
+
+    <div id="HbA1cNoDiabetesInput" style="display:none;">
+        <span class="DevHelperRequiredMark">*</span><label for="" id="" class="Label">-درجة قياس معدل السكر التراكمي    </label>
+
+        <input name="" type="text" maxlength="4" id="HbA1cNoDiabetesId" tabindex="1" class="TextBox" style="text-align: left;" placeholder="درجة قياس السكر التراكمي   " 
+            onkeyup="checkDec(this);" onkeypress="clearText('RequiredFieldSpanHbA1cAfterTwoHours');"/>
+    <a href="#">كيفية قياس السكر pdf</a>
+    <span id="HbA1cNoDiabetesSpan" class="RequiredFieldSpanHbA1c" style="display:none; color:red;">الحقل مطلوب</span><br />
+        
+</div>
+
+
+
+
+
+	<div id="HbA1cInput">
+            <span class="DevHelperRequiredMark" id="requiredSpanForDiabetes">*</span><label for="" id="" class="Label">-المعدل التراكمي </label>
+
+            <input name="" type="text" maxlength="4" id="HbA1c" tabindex="1" class="TextBox" style="text-align: left;" placeholder="درجة قياس السكر " 
+                onkeyup="checkDec(this);" onkeypress="clearText('RequiredFieldSpanHbA1c'); reset_msg('choiceForDiabetes');"/>
+        <a href="#">كيفية قياس السكر pdf</a>
+        <span id="RequiredFieldSpanHbA1c" class="RequiredFieldSpanHbA1c" style="display:none; color:red;">الحقل مطلوب</span><br />
+            
+    </div>
+
+
+<br>
+<br>
+
+
+    <div>
+            <label for="" id="pressure" class="Label" style="font-weight:bold;">الضغط</label>
+        <br />
+            <label for="" id="" class="Label">هل أنت مصاب </label>
+
+               <span id="">
+                <input id="yes_ihaveP" type="radio" name="HavePressureOrNot" onclick="reset_msg('RequiredFieldSpanRadioForPressure');" />
+                <label for="yes_ihaveP">نعم</label>
+                <input id="no_ihavnotP" type="radio" name="HavePressureOrNot" onclick="reset_msg('RequiredFieldSpanRadioForPressure');" />
+                <label for="no_ihavnotP">لا</label></span>
+
+            <span id="RequiredFieldSpanRadioForPressure" style="display:none; color:red;">الحقل مطلوب</span>
+	</div>
+
+
+	<div>
+            <span class="DevHelperRequiredMark">*</span><label for="" id="" class="Label" >الضغط الانبساطي</label>
+
+            <input name="" type="text" maxlength="4" id="DiastolicPressure" tabindex="1" class="TextBox" 
+                style="text-align: left;" placeholder="درجة قياس الضغط الانبساطي" onkeyup="checkDec(this);" onkeypress="clearText('RequiredFieldSpanForDiastolicPressure');"/>
+        <span id="RequiredFieldSpanForDiastolicPressure" class="RequiredFieldSpanForDiastolicPressure" style="display:none; color:red;">الحقل مطلوب</span><br />
+            <a href="#">كيفية قياس الضغط pdf</a>
+    </div>
+
+
+
+
+    <div>
+            <span class="DevHelperRequiredMark">*</span><label for="" id="" class="Label">الضغط الانقباضي</label>
+
+            <input name="" type="text" maxlength="4" id="SystolicPressure" tabindex="1" class="TextBox" style="text-align: left;"
+                placeholder="درجة قياس الضغط الانقباضي" onkeyup="checkDec(this);"  onkeypress="clearText('RequiredFieldSpanForSystolicPressure');" />
+        <span id="RequiredFieldSpanForSystolicPressure" class="RequiredFieldSpanForSystolicPressure" style="display:none; color:red;">الحقل مطلوب</span><br />
+            
+    </div>
+
+
+
+    <div>
+            <label for="" id="" class="Label" style="font-weight:bold;">الخصر</label>
+        <br />
+        <br />
+
+           <span class="DevHelperRequiredMark">*</span>             
+        <label for="" id="" class="Label">محيط الخصر</label>
+
+        <input name="" type="text" maxlength="4" id="Waistline" tabindex="1" class="TextBox" style="text-align: left;"
+            placeholder="درجة قياس محيط الخصر" onkeyup="checkDec(this); "  onkeypress="clearText('RequiredFieldSpanForWaistline');"/>
+        <span id="RequiredFieldSpanForWaistline" class="RequiredFieldSpanForWaistline" style="display:none; color:red;">الحقل مطلوب</span><br />
+            <a href="#">كيفية قياس محيط الخصر pdf</a>
+    </div>
+
+
+
+	
+	<div>
+            <input type="button" name="" id="KnowYourNumberSubmit" value="احسب أرقامك" onclick="calculate(); return false;" class="Button" />
+	</div>
+	
+	<div id="div_result">
+                    <label for="" id="" class="Label">النتائج</label>
+
+      <div class="body_weight_container" id="body_weight_container" >
+
+
+          <div class="body_weight_item" id="hasDiabetesHbA1c" style="display:none !important;"> 
+              <span class="weight_text">السكري</span>
+              <i class="flaticon-good" id="HbA1c_icon"></i> 
+              <span class="weight_kg" id="HbA1c_result1"></span> 
+                 <hr />
+              <div class="MessageStyle" id="HbA1c_message1">
+                 
+              </div>
+          </div>
+
+          <div class="body_weight_item" id="hasNoDiabetesFastChoice" style="display:none !important;"> 
+                <span class="weight_text">السكري</span>
+                <i class="flaticon-good" id="HbA1c_icon"></i> 
+                <span class="weight_kg" id="HbA1c_result2"></span> 
+                   <hr />
+                <div class="MessageStyle" id="HbA1c_message2">
+                   
+                </div>
+            </div>
+          
+            
+            <div class="body_weight_item" id="hasNoDiabetesHbA1c" style="display:none !important;"> 
+                    <span class="weight_text">السكري</span>
+                    <i class="flaticon-good" id="HbA1c_icon"></i> 
+                    <span class="weight_kg" id="HbA1c_result3"></span> 
+                       <hr />
+                    <div class="MessageStyle" id="HbA1c_message3">
+                       
+                    </div>
+                </div>
+          
+                
+
+                <div class="body_weight_item" id="hasNoDiabetesTwoHours" style="display:none !important;"> 
+                        <span class="weight_text">السكري</span>
+                        <i class="flaticon-good" id="HbA1c_icon"></i> 
+                        <span class="weight_kg" id="HbA1c_result4"></span> 
+                           <hr />
+                        <div class="MessageStyle" id="HbA1c_message4">
+                           
+                        </div>
+                    </div>
+                    
+          
+          
+ 
+
+        
+
+          <div class="body_weight_item" id="hasPressure" style="display:none !important;"> 
+              <span class="weight_text">الضغط </span>
+              <i class="flaticon-exclamation-mark-inside-a-circle" id="pressure_icon"></i>
+              <span class="weight_kg" id="pressure_result1"> 
+
+              </span>
+                 <hr />
+              <div class="MessageStyle" id="pressure_message1">
+                 
+              </div>
+          </div>
+
+
+          <div class="body_weight_item" id="hasNoPressure" style="display:none !important;"> 
+                <span class="weight_text">الضغط </span>
+                <i class="flaticon-exclamation-mark-inside-a-circle" id="pressure_icon"></i>
+                <span class="weight_kg" id="pressure_result2"> 
+  
+                </span>
+                   <hr />
+                <div class="MessageStyle" id="pressure_message2">
+                   
+                </div>
+            </div>
+
+
+       
+
+
+
+          <div class="body_weight_item" id="WaistlineMessure"  style="display:none !important;" > 
+              <span class="weight_text">
+                  محيط الخصر
+
+              </span> <i class="flaticon-exclamation-mark-inside-a-circle" id="Waistline_icon"></i> 
+              <span class="weight_kg" id="Waistline_result"> </span> 
+              <hr />
+              <div class="MessageStyle" id="Waistline_message">
+                  
+
+                  
+            
+              </div>
+          </div>						
+       
+
+
+      </div>
+        <div id="progressBarKnowYourNumber">
+
+        
+       
+
+
+
+            <div id="hasDiabetesHbA1cProgressBar" style="display:none !important;">
+                        <label for="" id="" class="Label" style="font-weight:bold;">السكر</label>
+
+    
+
+               <div class="bmi_container">
+        <div class="bmi_line">
+        <div class="bmi_weight obesefirstdegree">
+            <span class="bmi_weight_text">منخفض</span> 
+            <span id="dbiLow1" style="display:none;" class="bmi_rate"></span>
+
+        </div>
+        <div class="bmi_weight healthy"><span class="bmi_weight_text"> طبيعي</span>
+            <span id="dbiNat1" style="display:none;" class="bmi_rate">
+            </span><span class="bmi_max"></span></div>
+        <div class="bmi_weight over"><span class="bmi_weight_text">ماقبل الإصابة</span>
+            <span id="beforeDia1" style="display:none;" class="bmi_rate"></span>
+            <span class="bmi_max"></span></div>
+        <div class="bmi_weight obese"><span class="bmi_weight_text">مرتفع</span>
+            <span id="diaHigh1" style="display:none;" class="bmi_rate"></span>
+            <span class="bmi_max"></span></div>
+        <div class="bmi_weight obese"><span class="bmi_weight_text">مرتفع جدا</span>
+            <span id="obeselbl" style="display:none;" class="bmi_rate"></span>
+            <span class="bmi_max"></span></div>
+        <div class="bmi_weight obese"><span class="bmi_weight_text"> مصاب</span>
+            <span id="gotDia1" style="display:none;" class="bmi_rate tohight"></span>
+            <span class="bmi_max"></span></div>
+				</div>
+            </div>
+            
+        </div>
+
+
+
+        <div id="hasNoDiabetesTwoHoursProgressBar" style="display:none !important;">
+                <label for="" id="" class="Label" style="font-weight:bold;">السكر</label>
+
+
+
+       <div class="bmi_container">
+<div class="bmi_line">
+<div class="bmi_weight obesefirstdegree">
+    <span class="bmi_weight_text">منخفض</span> 
+    <span id="dbiLow2" style="display:none;" class="bmi_rate"></span>
+
+</div>
+<div class="bmi_weight healthy"><span class="bmi_weight_text"> طبيعي</span>
+    <span id="dbiNat2" style="display:none;" class="bmi_rate">
+    </span><span class="bmi_max"></span></div>
+<div class="bmi_weight over"><span class="bmi_weight_text">ماقبل الإصابة</span>
+    <span id="beforeDia2" style="display:none;" class="bmi_rate"></span>
+    <span class="bmi_max"></span></div>
+<div class="bmi_weight obese"><span class="bmi_weight_text">مرتفع</span>
+    <span id="diaHigh2" style="display:none;" class="bmi_rate"></span>
+    <span class="bmi_max"></span></div>
+<div class="bmi_weight obese"><span class="bmi_weight_text">مرتفع جدا</span>
+    <span id="obeselbl" style="display:none;" class="bmi_rate"></span>
+    <span class="bmi_max"></span></div>
+<div class="bmi_weight obese"><span class="bmi_weight_text"> مصاب</span>
+    <span id="gotDia2" style="display:none;" class="bmi_rate tohight"></span>
+    <span class="bmi_max"></span></div>
+        </div>
+    </div>
+    
+</div>
+
+
+
+
+            <div id="hasNoDiabetesHbA1cProgressBar" style="display:none !important;">
+                    <label for="" id="" class="Label" style="font-weight:bold;">السكر</label>
+
+
+
+            <div class="bmi_container">
+            <div class="bmi_line">
+            <div class="bmi_weight obesefirstdegree">
+            <span class="bmi_weight_text">منخفض</span> 
+            <span id="dbiLow3" style="display:none;" class="bmi_rate"></span>
+
+            </div>
+            <div class="bmi_weight healthy"><span class="bmi_weight_text"> طبيعي</span>
+            <span id="dbiNat3" style="display:none;" class="bmi_rate">
+            </span><span class="bmi_max"></span></div>
+            <div class="bmi_weight over"><span class="bmi_weight_text">ماقبل الإصابة</span>
+            <span id="beforeDia3" style="display:none;" class="bmi_rate"></span>
+            <span class="bmi_max"></span></div>
+            <div class="bmi_weight obese"><span class="bmi_weight_text">مرتفع</span>
+            <span id="diaHigh3" style="display:none;" class="bmi_rate"></span>
+            <span class="bmi_max"></span></div>
+            <div class="bmi_weight obese"><span class="bmi_weight_text">مرتفع جدا</span>
+            <span id="obeselbl" style="display:none;" class="bmi_rate"></span>
+            <span class="bmi_max"></span></div>
+            <div class="bmi_weight obese"><span class="bmi_weight_text"> مصاب</span>
+            <span id="gotDia3" style="display:none;" class="bmi_rate tohight"></span>
+            <span class="bmi_max"></span></div>
+            </div>
+            </div>
+
+            </div>
+
+
+            <div id="hasNoDiabetesFastChoiceProgressBar" style="display:none !important;">
+                    <label for="" id="" class="Label" style="font-weight:bold;">السكر</label>
+
+
+
+            <div class="bmi_container">
+            <div class="bmi_line">
+            <div class="bmi_weight obesefirstdegree">
+            <span class="bmi_weight_text">منخفض</span> 
+            <span id="dbiLow4" style="display:none;" class="bmi_rate"></span>
+
+            </div>
+            <div class="bmi_weight healthy"><span class="bmi_weight_text"> طبيعي</span>
+            <span id="dbiNat4" style="display:none;" class="bmi_rate">
+            </span><span class="bmi_max"></span></div>
+            <div class="bmi_weight over"><span class="bmi_weight_text">ماقبل الإصابة</span>
+            <span id="beforeDia4" style="display:none;" class="bmi_rate"></span>
+            <span class="bmi_max"></span></div>
+            <div class="bmi_weight obese"><span class="bmi_weight_text">مرتفع</span>
+            <span id="diaHigh4" style="display:none;" class="bmi_rate"></span>
+            <span class="bmi_max"></span></div>
+            <div class="bmi_weight obese"><span class="bmi_weight_text">مرتفع جدا</span>
+            <span id="obeselbl" style="display:none;" class="bmi_rate"></span>
+            <span class="bmi_max"></span></div>
+            <div class="bmi_weight obese"><span class="bmi_weight_text"> مصاب</span>
+            <span id="gotDia4" style="display:none;" class="bmi_rate tohight"></span>
+            <span class="bmi_max"></span></div>
+            </div>
+            </div>
+
+            </div>
+                        
+
+
+
+
+
+              <div id="hasPressureProgressBarS" style="display:none !important;">
+                  <label for="" id="" class="Label" style="font-weight:bold;">الضغط الانقباضي</label>
+               <div class="bmi_container">
+        <div class="bmi_line">
+        <div class="bmi_weight obesefirstdegree">
+            <span class="bmi_weight_text">منخفض</span> 
+            <span id="lowPressureS" style="display:none;" class="bmi_rate"></span>
+
+        </div>
+        <div class="bmi_weight healthy"><span class="bmi_weight_text"> طبيعي</span>
+            <span id="natPressureS" style="display:none;" class="bmi_rate">
+            </span><span class="bmi_max"></span></div>
+        <div class="bmi_weight over"><span class="bmi_weight_text">مرتفع نوعا ما</span>
+            <span id="kindofPressureS" style="display:none;" class="bmi_rate"></span>
+            <span class="bmi_max"></span></div>
+        <div class="bmi_weight obese"><span class="bmi_weight_text">مرتفع</span>
+            <span id="HighPressureS" style="display:none;" class="bmi_rate"></span>
+            <span class="bmi_max"></span></div>
+        <div class="bmi_weight obese"><span class="bmi_weight_text">مرتفع جدا</span>
+            <span id="VeryHighPressureS" style="display:none;" class="bmi_rate"></span>
+            <span class="bmi_max"></span></div>
+        <div class="bmi_weight obese"><span class="bmi_weight_text">ارتفاع طارئ</span>
+            <span id="emerPressureS" style="display:none;" class="bmi_rate tohight"></span>
+            <span class="bmi_max"></span></div>
+				</div>
+            </div>
+        </div>
+
+        
+        <div id="hasNoPressureProgressBarS" style="display:none !important;">
+            <label for="" id="" class="Label" style="font-weight:bold;">الضغط الانقباضي</label>
+         <div class="bmi_container">
+  <div class="bmi_line">
+  <div class="bmi_weight obesefirstdegree">
+      <span class="bmi_weight_text">منخفض</span> 
+      <span id="lowPressureS2" style="display:none;" class="bmi_rate"></span>
+
+  </div>
+  <div class="bmi_weight healthy"><span class="bmi_weight_text"> طبيعي</span>
+      <span id="natPressureS2" style="display:none;" class="bmi_rate">
+      </span><span class="bmi_max"></span></div>
+  <div class="bmi_weight over"><span class="bmi_weight_text">مرتفع نوعا ما</span>
+      <span id="kindofPressureS2" style="display:none;" class="bmi_rate"></span>
+      <span class="bmi_max"></span></div>
+  <div class="bmi_weight obese"><span class="bmi_weight_text">مرتفع</span>
+      <span id="HighPressureS2" style="display:none;" class="bmi_rate"></span>
+      <span class="bmi_max"></span></div>
+  <div class="bmi_weight obese"><span class="bmi_weight_text">مرتفع جدا</span>
+      <span id="VeryHighPressureS2" style="display:none;" class="bmi_rate"></span>
+      <span class="bmi_max"></span></div>
+  <div class="bmi_weight obese"><span class="bmi_weight_text">ارتفاع طارئ</span>
+      <span id="emerPressureS2" style="display:none;" class="bmi_rate tohight"></span>
+      <span class="bmi_max"></span></div>
+          </div>
+      </div>
+  </div>
+      
+            
+
+
+
+            
+          
+         <div id="hasPressureProgressBarD" style="display:none !important;">
+        <label for="" id="" class="Label" style="font-weight:bold;">الضغط الانبساطي</label>
+               <div class="bmi_container">
+        <div class="bmi_line">
+        <div class="bmi_weight obesefirstdegree">
+            <span class="bmi_weight_text">منخفض</span> 
+            <span id="lowPressureD" style="display:none;" class="bmi_rate"></span>
+
+        </div>
+        <div class="bmi_weight healthy"><span class="bmi_weight_text"> طبيعي</span>
+            <span id="natPressureD" style="display:none;" class="bmi_rate">
+            </span><span class="bmi_max"></span></div>
+        <div class="bmi_weight over"><span class="bmi_weight_text">مرتفع نوعا ما</span>
+            <span id="kindofPressureD" style="display:none;" class="bmi_rate"></span>
+            <span class="bmi_max"></span></div>
+        <div class="bmi_weight obese"><span class="bmi_weight_text">مرتفع</span>
+            <span id="HighPressureD" style="display:none;" class="bmi_rate"></span>
+            <span class="bmi_max"></span></div>
+        <div class="bmi_weight obese"><span class="bmi_weight_text">مرتفع جدا</span>
+            <span id="VeryHighPressureD" style="display:none;" class="bmi_rate"></span>
+            <span class="bmi_max"></span></div>
+        <div class="bmi_weight obese"><span class="bmi_weight_text">ارتفاع طارئ</span>
+            <span id="emerPressureD" style="display:none;" class="bmi_rate tohight"></span>
+            <span class="bmi_max"></span></div>
+				</div>
+			</div>
+        </div>
+
+
+                  
+        <div id="hasNoPressureProgressBarD" style="display:none !important;">
+            <label for="" id="" class="Label" style="font-weight:bold;">الضغط الانبساطي</label>
+                   <div class="bmi_container">
+            <div class="bmi_line">
+            <div class="bmi_weight obesefirstdegree">
+                <span class="bmi_weight_text">منخفض</span> 
+                <span id="lowPressureD2" style="display:none;" class="bmi_rate"></span>
+    
+            </div>
+            <div class="bmi_weight healthy"><span class="bmi_weight_text"> طبيعي</span>
+                <span id="natPressureD2" style="display:none;" class="bmi_rate">
+                </span><span class="bmi_max"></span></div>
+            <div class="bmi_weight over"><span class="bmi_weight_text">مرتفع نوعا ما</span>
+                <span id="kindofPressureD2" style="display:none;" class="bmi_rate"></span>
+                <span class="bmi_max"></span></div>
+            <div class="bmi_weight obese"><span class="bmi_weight_text">مرتفع</span>
+                <span id="HighPressureD2" style="display:none;" class="bmi_rate"></span>
+                <span class="bmi_max"></span></div>
+            <div class="bmi_weight obese"><span class="bmi_weight_text">مرتفع جدا</span>
+                <span id="VeryHighPressureD2" style="display:none;" class="bmi_rate"></span>
+                <span class="bmi_max"></span></div>
+            <div class="bmi_weight obese"><span class="bmi_weight_text">ارتفاع طارئ</span>
+                <span id="emerPressureD2" style="display:none;" class="bmi_rate tohight"></span>
+                <span class="bmi_max"></span></div>
+                    </div>
+                </div>
+            </div>
+    
+
+            <div id="WaistlineHideAndShow" style="display:none !important;">
+            
+                  <label for="" id="" class="Label" style="font-weight:bold;"> محيط الخصر</label>
+
+    
+
+               <div class="bmi_container">
+        <div class="bmi_line">
+        <div class="bmi_weight under">
+            <span class="bmi_weight_text">منخفض</span> 
+            <span id="underweigthtlbl" style="display:none;" class="bmi_rate"></span>
+
+        </div>
+        <div class="bmi_weight healthy"><span class="bmi_weight_text"> طبيعي</span>
+            <span id="WaistlineNat" style="display:none;" class="bmi_rate">
+            </span><span class="bmi_max"></span></div>
+        <div class="bmi_weight over"><span class="bmi_weight_text">مرتفع  قليلا</span>
+            <span id="kindofPressure" style="display:none;" class="bmi_rate"></span>
+            <span class="bmi_max"></span></div>
+        <div class="bmi_weight obese"><span class="bmi_weight_text">مرتفع</span>
+            <span id="WaistlineNatHigh" style="display:none;" class="bmi_rate"></span>
+            <span class="bmi_max"></span></div>
+        <div class="bmi_weight obese"><span class="bmi_weight_text">مرتفع جدا</span>
+            <span id="WaistlineVeryHigh" style="display:none;" class="bmi_rate"></span>
+            <span class="bmi_max"></span></div>
+        <div class="bmi_weight obese"><span class="bmi_weight_text">ارتفاع طارئ</span>
+            <span id="obeselbl1" style="display:none;" class="bmi_rate tohight"></span>
+            <span class="bmi_max"></span></div>
+				</div>
+			</div>
+        </div>
+
+
+
+
+         
+
+
+
+            <div class="printMessages">
+           <a href="#">تعرف على نمط الحياة الصحي</a>
+           <a href="#">تعرف على حمية داش</a>
+           <br />
+            <input type="button" name="" value="طباعة النتائج" onclick="printDiv('div_result');" class="Button"  />
+
+           </div>
+
+           <div style="text-align:center;">
+           <label for="" id="" class="Label" style="font-weight:bold; display: block;"> يمكنك زيارة أقرب مركز صحي لمعرفة أرقامك</label>
+
+           <a href="#"> تعرف على المراكز الصحية</a>
+
+            </div>
+        </div>
+
+</div>
+	
+			
+</div>
+
+
+         <script src="Messages.js"></script>
+         <script src="male.js"></script>
+         <script src="female.js"></script>
+
+        <script src="KnowYourNumberJs.js"></script>
+
+</body>
+</html>
